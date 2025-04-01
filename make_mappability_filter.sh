@@ -24,6 +24,13 @@ for arg in "$@"; do
   esac
 done
 
+# Validate required arguments
+if [[ -z "$input_fasta" || -z "$kmer_length" || -z "$stringency" ]]; then
+  echo "Error: Missing required arguments."
+  echo "Usage: $0 -i=<input_fasta> -k=<kmer_length> -r=<stringency>"
+  exit 1
+fi
+
 echo $(dirname $input_fasta)
 echo $(basename $input_fasta)
 
